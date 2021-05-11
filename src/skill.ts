@@ -4,7 +4,7 @@ interface ISkill {
     optionProps:number
     getSkill: () => string
 }
-type SkillProps {
+type SkillProps = {
     name: string
     description: string
     optionProps?: number
