@@ -4,7 +4,7 @@ const skillRouter: Router = Router();
 
 console.log('User router');
 
-skillRouter.get('/', (req, res) => {
+skillRouter.get('/', (_req, res) => {
     res.json('Skills');
 })
 

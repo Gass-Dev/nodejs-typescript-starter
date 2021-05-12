@@ -1,4 +1,4 @@
-import { createServer } from '../app/http/app'
+import { createServer } from '../src/app/http/app'
 import { Application } from 'express'
 import request from 'supertest';
 
