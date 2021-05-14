@@ -14,7 +14,5 @@ export class GetCategoriesController {
         console.log(categories);
 
         res.status(200).json(categories)
-
-        res.status(200).json(categories)
     }
 }
