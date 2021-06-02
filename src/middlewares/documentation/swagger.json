@@ -5,7 +5,7 @@
         "description": "Backend API boiler plate with express + jest + supertest documented with Swagger",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
-            "email": "quentin.danneville@gmail.com"
+            "email": "madebygass@gmail.com"
         },
         "license": {
             "name": "MIT",
