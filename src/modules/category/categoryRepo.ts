@@ -7,10 +7,10 @@ export class CategoryRepo {
     this.entities = entities;
   }
 
-  public async create(data: categoryProps) {
+  public async createCategories(props: categoryProps) {
     const CategoryEntity = this.entities.Category;
-    const { name, description } = data;
-    const category = await CategoryEntity.create({ name, description }).save();
+    const { name, description } = props;
+    const category = await CategoryEntity.createCategories({ name, description }).save();
     return category;
   }
 
