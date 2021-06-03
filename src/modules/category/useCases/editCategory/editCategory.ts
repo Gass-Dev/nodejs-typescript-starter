@@ -2,13 +2,17 @@
 import { CategoryRepo } from "../../categoryRepo";
 
 export class EditCategory {
-    private categoryRepo: CategoryRepo;
+  private categoryRepo: CategoryRepo;
 
-    constructor(categoryRepo: CategoryRepo) {
-        this.categoryRepo = categoryRepo
-    }
+  constructor(categoryRepo: CategoryRepo) {
+    this.categoryRepo = categoryRepo;
+  }
 
-    public async execute() {
-        return await this.categoryRepo.editCategory();
-    }
+  public async editCategory(Props: any, params: any) {
+    const updatecategory = await this.categoryRepo.editCategory(
+      Props,
+      params.id
+    );
+    return updatecategory;
+  }
 }

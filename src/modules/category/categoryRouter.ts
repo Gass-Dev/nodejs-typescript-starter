@@ -1,15 +1,30 @@
-import { Router } from 'express'
-import { createCategoryController } from './useCases/createCategory/'
-import { getCategoriesController } from './useCases/getCategories'
-import { editCategoryController} from './useCases/editCategory'
-// import { deleteCategoryController } from './useCases/deleteCategory'
+import { Router } from "express";
+import { createCategoryController } from "./useCases/createCategory";
+import { getCategoryController } from "./useCases/getCategory/";
+import { getCategoryByIdController } from "./useCases/getCategoryById";
+import { editCategoryController } from "./useCases/editCategory/";
+import { deleteCategoryController } from "./useCases/deleteCategory";
 
 const categoryRouter: Router = Router();
 
-///api/v1/skills/
-categoryRouter.post('/', (req, res) => createCategoryController.execute(req, res))
-categoryRouter.get('/', (req, res) => getCategoriesController.execute(req,res))
-categoryRouter.put('/update', (req, res) => editCategoryController.execute(req, res))
-// categoryRouter.get('/delete', (req, res) => deleteCategoryController.execute(req, res))
+categoryRouter.post("/", (req, resp) => {
+  createCategoryController.execute(req, resp);
+});
 
-export { categoryRouter }
+categoryRouter.get("/", (req, resp) =>
+  getCategoryController.execute(req, resp)
+);
+
+categoryRouter.get("/:id", (req, resp) =>
+  getCategoryByIdController.execute(req, resp)
+);
+
+categoryRouter.patch("/:id", (req, resp) => {
+  editCategoryController.execute(req, resp);
+});
+
+categoryRouter.delete("/:id", (req, resp) => {
+  deleteCategoryController.execute(req, resp);
+});
+
+export { categoryRouter };
