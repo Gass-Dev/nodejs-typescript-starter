@@ -4,11 +4,16 @@ import { categoryProps } from "../../categoryTypes";
 
 export class CreateCategory {
   private categoryRepo: CategoryRepo;
+
   constructor(categoryRepo: CategoryRepo) {
     this.categoryRepo = categoryRepo;
   }
 
-  public async execute(props: categoryProps) {
-    return await this.categoryRepo.create(props);
+  public async createCategories(props: categoryProps) {
+    const category = {
+      name: props.name,
+      description: props.description,
+    };
+    return await this.categoryRepo.createCategories(category);
   }
 }
