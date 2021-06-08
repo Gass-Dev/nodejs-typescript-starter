@@ -1,47 +1,30 @@
-import { categoryProps, categoryPropsId } from "../category/categoryTypes";
+import { categoryProps } from "./categoryTypes";
 
 export class CategoryRepo {
   private entities: any;
+
   constructor(entities: any) {
     //Category //User //Skill
     this.entities = entities;
   }
 
-  public async createCategories(props: categoryProps) {
+  // public async getCategories(props) {
+  //     const CategoryEntity = this.entities.Category
+  //     return await CategoryEntity.create();
+  // }
+
+  public async create(categoryProps: categoryProps) {
     const CategoryEntity = this.entities.Category;
-    const { name, description } = props;
-    const category = await CategoryEntity.createCategories({ name, description }).save();
-    return category;
+
+    return await CategoryEntity.create({
+      name: categoryProps.name,
+      description: categoryProps.description,
+    }).save();
   }
 
-  public async getCategories() {
+  public async getCategoryById(categoryId: number) {
     const CategoryEntity = this.entities.Category;
-    const category = await CategoryEntity.find();
-    return category;
-  }
 
-  public async getCategoryById(id: categoryPropsId) {
-    const CategoryEntity = this.entities.Category;
-    const category = await CategoryEntity.findOne({ where: { id: id } });
-    return category;
-  }
-
-  public async editCategory(data: categoryProps, id: categoryPropsId) {
-    const CategoryEntity = this.entities.Category;
-    const categoryId = await CategoryEntity.findOne({ where: { id: id } });
-    console.log("get ID *****", categoryId);
-    if (categoryId) {
-      const result = await CategoryEntity.merge(categoryId, data).save();
-      return result;
-    }
-    // const updatecategory = await categoryId.update(data).save();
-    // console.log("Update Category Repo =>", updatecategory);
-  }
-
-  public async deleteCategory(id: categoryPropsId) {
-    const CategoryEntity = this.entities.Category;
-    const deleteCategory = await CategoryEntity.delete(id);
-    console.log("DELETE REPOOOOOO", deleteCategory);
-    return deleteCategory;
+    return await CategoryEntity.findOne(categoryId);
   }
 }

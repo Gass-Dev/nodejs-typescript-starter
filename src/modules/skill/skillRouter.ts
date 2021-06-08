@@ -1,11 +1,9 @@
-import { Router } from 'express'
+import { Router } from "express";
+import { createSkillController } from "./useCases/createSkill/";
 
 const skillRouter: Router = Router();
 
-console.log('User router');
+///api/v1/skills/
+skillRouter.post("/", (req, res) => createSkillController.execute(req, res));
 
-skillRouter.get('/', (_req, res) => {
-    res.json('Skills');
-})
-
-export { skillRouter }
+export { skillRouter };
